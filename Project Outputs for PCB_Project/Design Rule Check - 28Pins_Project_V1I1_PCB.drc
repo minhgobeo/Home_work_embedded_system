@@ -1,0 +1,179 @@
+Protel Design System Design Rule Check
+PCB File : E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc
+Date     : 2/14/2025
+Time     : 11:13:59 PM
+
+WARNING: Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again
+   Polygon named: L2-No Net In net +5V On L2
+   Polygon named: L2-No Net In net +3V3 On L2
+   Polygon named: L2-No Net In net +5V/3V3 On L2
+   Polygon named: L2-No Net In net +5V_USB On L2
+   Polygon named: L2-No Net In net GND On L2
+   Polygon named: L2-No Net In net +5V/3V3 On L2
+   Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L2
+   Polygon named: L2-No Net In net GND On L2
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net +3V3 On L1
+   Polygon named: L2-No Net In net +3V3 On L1
+   Polygon named: L2-No Net In net +5V On L1
+   Polygon named: L2-No Net In net +5V On L1
+   Polygon named: L2-No Net In net +5V On L1
+   Polygon named: L2-No Net In net +5V/3V3 On L1
+   Polygon named: L2-No Net In net +5V/3V3 On L1
+   Polygon named: L2-No Net In net +5V/3V3_328P_AVCC On L1
+   Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L1
+   Polygon named: L2-No Net In net +5V_USB On L1
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net +5V On L2
+   Polygon named: L2-No Net In net +3V3 On L2
+   Polygon named: L2-No Net In net +5V/3V3 On L2
+   Polygon named: L2-No Net In net +5V_USB On L2
+   Polygon named: L2-No Net In net GND On L2
+   Polygon named: L2-No Net In net +5V/3V3 On L2
+   Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L2
+   Polygon named: L2-No Net In net GND On L2
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net +3V3 On L1
+   Polygon named: L2-No Net In net +3V3 On L1
+   Polygon named: L2-No Net In net +5V On L1
+   Polygon named: L2-No Net In net +5V On L1
+   Polygon named: L2-No Net In net +5V On L1
+   Polygon named: L2-No Net In net +5V/3V3 On L1
+   Polygon named: L2-No Net In net +5V/3V3 On L1
+   Polygon named: L2-No Net In net +5V/3V3_328P_AVCC On L1
+   Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L1
+   Polygon named: L2-No Net In net +5V_USB On L1
+   Polygon named: L2-No Net In net GND On L1
+   Polygon named: L2-No Net In net GND On L1
+
+Processing Rule : Clearance Constraint (Gap=0.3mm) (IsRegion),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.2mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L1 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+   Violation between Modified Polygon: Polygon Shelved  (L2-No Net) on L2 
+Rule Violations :22
+
+Processing Rule : Width Constraint (Min=0.15mm) (Max=0.5mm) (Preferred=0.15mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.4mm) (Max=4mm) (Preferred=0.4mm) (InNet('+*') or InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Routing Layers(All)
+Rule Violations :0
+
+Processing Rule : Routing Via (MinHoleWidth=0.3mm) (MaxHoleWidth=0.3mm) (PreferredHoleWidth=0.3mm) (MinWidth=0.6mm) (MaxWidth=0.6mm) (PreferedWidth=0.6mm) (All)
+Rule Violations :0
+
+Processing Rule : Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.381mm) (Max=0.381mm) (Prefered=0.381mm) (All)
+Rule Violations :0
+
+Processing Rule : Power Plane Connect Rule(Direct Connect )(Expansion=0.2mm) (Conductor Width=0.3mm) (Air Gap=0.2mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.2mm) (Max=10mm) (All)
+Rule Violations :0
+
+Processing Rule : Pads and Vias to follow the Drill pairs settings
+Rule Violations :0
+
+Processing Rule : Hole To Hole Clearance (Gap=0.3mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.05mm < 0.1mm) Between Pad J7-6(-48.55mm,37.8mm) on L1 And Pad U5-1(-47.75mm,39.35mm) on L1 [Top Solder] Mask Sliver [0.05mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.094mm < 0.1mm) Between Pad U5-4(-45.85mm,42.05mm) on L1 And Via (-44.981mm,42.225mm) from L1 to L2 [Top Solder] Mask Sliver [0.094mm]
+Rule Violations :2
+
+Processing Rule : Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad C10-2(-26.8mm,40.5mm) on L1 And Track (-27.134mm,36.222mm)(-27.134mm,39.778mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad C10-2(-26.8mm,40.5mm) on L1 And Track (-29.166mm,39.778mm)(-27.134mm,39.778mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad C1-2(-43.5mm,30.65mm) on L1 And Track (-44.651mm,32.184mm)(-41.349mm,32.184mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad C3-2(-28.15mm,38.95mm) on L1 And Track (-27.628mm,39.484mm)(-24.072mm,39.484mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad C3-2(-28.15mm,38.95mm) on L1 And Track (-27.628mm,39.484mm)(-27.628mm,41.516mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad J7-6(-48.55mm,37.8mm) on L1 And Track (-48.949mm,38.684mm)(-48.949mm,40.716mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad J7-6(-48.55mm,37.8mm) on L1 And Track (-52.251mm,38.684mm)(-48.949mm,38.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.084mm < 0.1mm) Between Pad J7-8(-51mm,37.9mm) on Multi-Layer And Track (-52.251mm,38.684mm)(-48.949mm,38.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.084mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad JP4-2(-36.84mm,24.4mm) on Multi-Layer And Track (-36.852mm,25.436mm)(-36.852mm,30.706mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad MH3-1(13.44mm,52.86mm) on Multi-Layer And Text "TX (OUT)" (12.746mm,62.794mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad R22-1(-26.1mm,31.45mm) on L1 And Track (-25.43mm,27.61mm)(-25.43mm,38.01mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad R22-2(-26.1mm,29.55mm) on L1 And Track (-25.43mm,27.61mm)(-25.43mm,38.01mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.051mm < 0.1mm) Between Pad R27-1(-17.5mm,21.85mm) on L1 And Track (-18.516mm,22.351mm)(-16.484mm,22.351mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.051mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.051mm < 0.1mm) Between Pad R28-2(-17.5mm,21.65mm) on L1 And Track (-18.516mm,21.149mm)(-16.484mm,21.149mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.051mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0mm < 0.1mm) Between Pad U3-1(-37.54mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0mm < 0.1mm) Between Pad U3-2(-36.27mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0mm < 0.1mm) Between Pad U3-3(-35mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0mm < 0.1mm) Between Pad U3-4(-33.73mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+Rule Violations :18
+
+Processing Rule : Silk to Silk (Clearance=0.1mm) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.1mm) Between Text "0" (12.886mm,64.274mm) on Bottom Overlay And Text "RX (IN)" (13.186mm,63.794mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.1mm) Between Text "5V" (-35.63mm,28.813mm) on Bottom Overlay And Track (-36.852mm,25.436mm)(-36.852mm,30.706mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.1mm) Between Text "J7" (-47.3mm,28.6mm) on Top Overlay And Track (-46.3mm,27mm)(-46.3mm,31.4mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.1mm) Between Text "JP2" (-51.5mm,50.6mm) on Top Overlay And Track (-52.63mm,51.678mm)(-45.01mm,51.678mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.1mm) Between Text "JP4" (-40.7mm,21.8mm) on Top Overlay And Track (-40.7mm,18.2mm)(-40.7mm,22.6mm) on Top Overlay Silk Text to Silk Clearance [0mm]
+   Violation between Silk To Silk Clearance Constraint: (Collision < 0.1mm) Between Text "RX (IN)" (13.186mm,63.794mm) on Bottom Overlay And Text "TX (OUT)" (12.746mm,62.794mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]
+Rule Violations :6
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+   Violation between Net Antennae: Track (-11.944mm,66.2mm)(-10.6mm,64.856mm) on L1 
+Rule Violations :1
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('SCKT FOR U1')),(InComponent('MH2') or InComponent('U1')) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('SW2')),(InComponent('FID1')) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('R27')),(InComponent('R28')) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('MH4')),(InComponent('FID4') or InComponent('J4')) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0.2mm, Vertical Gap = 0.2mm ) (All),(All) 
+Rule Violations :0
+
+Processing Rule : Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('MH2')),(InComponent('J2')) 
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=-8mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 49
+Waived Violations : 0
+Time Elapsed        : 00:00:01

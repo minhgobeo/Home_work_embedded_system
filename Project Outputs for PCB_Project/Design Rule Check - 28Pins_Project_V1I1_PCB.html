@@ -1,0 +1,679 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2/14/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">11:13:59 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc" class="file"><acronym title="E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc">E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">44</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">49</td></tr>
+</table>
+</td>
+</table><a name="IDZWGPGBJJFK54BAYOJWO2KF2W1MXWEUJN25ZIQZG5WT5MKTD2O4WB"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDWWKFO0QWYSYGCF2L4FVVX5A1KF3GMWFMR4PKKOM2LO0O0I0S5FHE">Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again</a></td>
+<td class="column2">44</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">44</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNMBBJHFCR3NACWM4B1ZRX0YRYCNI5R5KOXRK0FL101DBQGHG012I">Clearance Constraint (Gap=0.3mm) (IsRegion),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRNJGKPQHAS1LH3IHOE3HEXNKCERNH3RUSAL2X1EKRCUNYGI5ZDEE">Clearance Constraint (Gap=0.2mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUOTF02TPAPYPOD0FH120IXU5ACX2T55IFCKHCJHJQBJL25FJQXWM">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDL5BUJK1TIAKTKAMYWCC4LDHJOSPS5EYDGOZB1E5RSNJOCQZJYOM">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTRBR1SM1QIECISZAM2Q1UX5ZYH5Z5HGKF5RADEKOHOEE5JT4IWOI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">22</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDZ5QF0M1MEYBG0VNWAQHLZG0TIRJOCVAM0P2ITHOJZYENHJJ00IK">Width Constraint (Min=0.15mm) (Max=0.5mm) (Preferred=0.15mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFU11NLBQJ0TPT3XWVOWLUPZBDRO5P3141XQ2XKPWORDDOMTWL5H">Width Constraint (Min=0.4mm) (Max=4mm) (Preferred=0.4mm) (InNet('+*') or InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1TVBDKIRTVFXP1VFGKSEBSJLCBZMIIFFXSDT5WCPEJ23Y1YQ4R3D">Routing Layers(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDY10BH5Z1BAKFIFH5NKOHLHYBRLNWGXYKPNEBMDKAJ3UHFIWNEP5C">Routing Via (MinHoleWidth=0.3mm) (MaxHoleWidth=0.3mm) (PreferredHoleWidth=0.3mm) (MinWidth=0.6mm) (MaxWidth=0.6mm) (PreferedWidth=0.6mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJM1GRY4F2JWYPCMSDUDF4IJXLVRTMP1IMRHVAMMTMC5BIVSZSFD">Differential Pairs Uncoupled Length using the Gap Constraints (Min=0.254mm) (Max=0.254mm) (Prefered=0.254mm)  and Width Constraints (Min=0.381mm) (Max=0.381mm) (Prefered=0.381mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQXLAF5WKCZCJJB5SFF0X54FZ2MQWXBDAURP1WLHHS5V41F3E1EL">Power Plane Connect Rule(Direct Connect )(Expansion=0.2mm) (Conductor Width=0.3mm) (Air Gap=0.2mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1LH4Q3BJFSNOMRJZGM3VU43FKHF0YO4PQMTOSSDSHDQMFH5Y4W5F">Hole Size Constraint (Min=0.2mm) (Max=10mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAGPJ1H11AB5RKA0X3CKLLCVHWJC4ZBV3IQK2HXK1XQOD5RRPXHSB">Pads and Vias to follow the Drill pairs settings</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDI33A5A3NBZ4WD4CBQEKEFKMZFGDHL05MZ1OB2IF4DXTATBU4NVNP">Hole To Hole Clearance (Gap=0.3mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZI1EE0NUF4XTDMLOB5MTZQLSXBCDUFVBQT4OWFBWBL3RI0YEFWCI">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1USCRAKTOIHCKZ5LKJOLHOYCTOQ5EJMTRX3LQ4MLMMIBQNTPDTVD">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</a></td>
+<td class="column2">18</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDBGVB2AEH5VPQC1PUNSK1OALWKF5RQVXNBKU5OQKNPDVZ10UEE4FK">Silk to Silk (Clearance=0.1mm) (All),(All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKPAVNX3M530FKUBGY1DQOM2F3NAJQOK3IRI2VKLE3EFEDFSREHGH">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTKXNYI3AJPCQKWEGAZ3WHB5WZDITHILMKLZSC0NKQEGGLRHG0SJL">Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('SCKT FOR U1')),(InComponent('MH2') or InComponent('U1')) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGOX1JLDZFVHFO1XZ2FZTS20JKOT5MWCZZBU2TPWBXV4OBN0Q3NH">Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('SW2')),(InComponent('FID1')) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQI2T544ODG1IM5WTNXZ5DWBNSIHWWLYUVYMEEUGL4IUOPWLZQLOG">Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('R27')),(InComponent('R28')) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID1K45DF0MZCPDB00F4H4N3UJOBNGOBVZS1MCNJ5CQWYXYV4IGAQJJ">Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('MH4')),(InComponent('FID4') or InComponent('J4')) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDC0ZKDSDBZ125M4Q3JF2BJ1CKPOGTFUL3FZJEACDKQJE1HMAX0BL">Component Clearance Constraint ( Horizontal Gap = 0.2mm, Vertical Gap = 0.2mm ) (All),(All) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4VAXMESSHRZC23YXRVDZXSRABV2TFAG0HAH0XG21APLG0WOWXEL">Component Clearance Constraint ( Horizontal Gap = 0mm, Vertical Gap = 0mm ) (InComponent('MH2')),(InComponent('J2')) </a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSBEIBRSTIOCYHVPMKENTBGN1RF2L22ZJVSLKRONHGNHUD45JBWLN">Height Constraint (Min=-8mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">49</td>
+</tr>
+</table><br><a name="ID4EYKMIHYZ0FUKF2EVRHJSRDVFCTG4RRSFG3LUBPVWFZVLC2JKBRO"><h2>Warnings</h2></a><a name="IDWWKFO0QWYSYGCF2L4FVVX5A1KF3GMWFMR4PKKOM2LO0O0I0S5FHE"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +3V3 On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V_USB On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net GND On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net GND On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +3V3 On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +3V3 On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3_328P_AVCC On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V_USB On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +3V3 On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V_USB On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net GND On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L2</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net GND On L2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +3V3 On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +3V3 On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3 On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3_328P_AVCC On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net +5V/3V3_328P_VCC On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net +5V_USB On L1</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1">Polygon named: L2-No Net In net GND On L1</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDTRBR1SM1QIECISZAM2Q1UX5ZYH5Z5HGKF5RADEKOHOEE5JT4IWOI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Modified Polygon (Allow modified: No), (Allow shelved: No)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14318.898mil|Location2.X=14803.15mil|Location1.Y=16421.26mil|Location2.Y=16893.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14318.898mil|Location2.X=14803.15mil|Location1.Y=16421.26mil|Location2.Y=16893.701mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13688.976mil|Location2.X=13775.591mil|Location1.Y=16704.724mil|Location2.Y=17196.85mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13688.976mil|Location2.X=13775.591mil|Location1.Y=16704.724mil|Location2.Y=17196.85mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12535.433mil|Location2.X=12708.662mil|Location1.Y=15562.992mil|Location2.Y=15763.78mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12535.433mil|Location2.X=12708.662mil|Location1.Y=15562.992mil|Location2.Y=15763.78mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13692.914mil|Location2.X=13846.457mil|Location1.Y=15314.961mil|Location2.Y=15527.559mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13692.914mil|Location2.X=13846.457mil|Location1.Y=15314.961mil|Location2.Y=15527.559mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13417.323mil|Location2.X=13665.354mil|Location1.Y=15314.961mil|Location2.Y=15614.173mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13417.323mil|Location2.X=13665.354mil|Location1.Y=15314.961mil|Location2.Y=15614.173mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=12460.63mil|Location1.Y=15594.488mil|Location2.Y=15740.157mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=12460.63mil|Location1.Y=15594.488mil|Location2.Y=15740.157mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=12960.63mil|Location1.Y=15562.992mil|Location2.Y=15759.843mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=12960.63mil|Location1.Y=15562.992mil|Location2.Y=15759.843mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13421.26mil|Location2.X=13570.866mil|Location1.Y=15318.898mil|Location2.Y=15460.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13421.26mil|Location2.X=13570.866mil|Location1.Y=15318.898mil|Location2.Y=15460.63mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13282.835mil|Location2.X=13488.819mil|Location1.Y=15314.961mil|Location2.Y=15547.244mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13282.835mil|Location2.X=13488.819mil|Location1.Y=15314.961mil|Location2.Y=15547.244mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12169.291mil|Location2.X=12637.795mil|Location1.Y=16842.52mil|Location2.Y=16992.126mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12169.291mil|Location2.X=12637.795mil|Location1.Y=16842.52mil|Location2.Y=16992.126mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13996.063mil|Location2.X=14074.803mil|Location1.Y=15452.756mil|Location2.Y=15677.165mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13996.063mil|Location2.X=14074.803mil|Location1.Y=15452.756mil|Location2.Y=15677.165mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=12960.63mil|Location1.Y=15267.717mil|Location2.Y=16204.724mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=12960.63mil|Location1.Y=15267.717mil|Location2.Y=16204.724mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13720.472mil|Location2.X=13897.638mil|Location1.Y=15547.244mil|Location2.Y=15795.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13720.472mil|Location2.X=13897.638mil|Location1.Y=15547.244mil|Location2.Y=15795.276mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=12425.197mil|Location1.Y=15267.717mil|Location2.Y=15535.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=12425.197mil|Location1.Y=15267.717mil|Location2.Y=15535.433mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L1 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=13673.228mil|Location1.Y=15267.717mil|Location2.Y=15641.732mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=13673.228mil|Location1.Y=15267.717mil|Location2.Y=15641.732mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13125.985mil|Location2.X=14803.15mil|Location1.Y=17133.858mil|Location2.Y=17342.521mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13125.985mil|Location2.X=14803.15mil|Location1.Y=17133.858mil|Location2.Y=17342.521mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12330.679mil|Location2.X=12460.63mil|Location1.Y=15685.039mil|Location2.Y=16169.173mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12330.679mil|Location2.X=12460.63mil|Location1.Y=15685.039mil|Location2.Y=16169.173mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=14547.244mil|Location1.Y=15267.716mil|Location2.Y=17271.654mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=14547.244mil|Location1.Y=15267.716mil|Location2.Y=17271.654mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=13547.244mil|Location1.Y=15318.898mil|Location2.Y=15677.166mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12740.158mil|Location2.X=13547.244mil|Location1.Y=15318.898mil|Location2.Y=15677.166mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13897.638mil|Location2.X=14114.173mil|Location1.Y=15653.543mil|Location2.Y=15893.701mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13897.638mil|Location2.X=14114.173mil|Location1.Y=15653.543mil|Location2.Y=15893.701mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12551.181mil|Location2.X=13354.331mil|Location1.Y=16755.904mil|Location2.Y=17055.118mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12551.181mil|Location2.X=13354.331mil|Location1.Y=16755.904mil|Location2.Y=17055.118mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=14803.15mil|Location1.Y=15267.717mil|Location2.Y=17342.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12125.984mil|Location2.X=14803.15mil|Location1.Y=15267.717mil|Location2.Y=17342.52mil|Absolute=True">Modified Polygon: Polygon Shelved  (L2-No Net) on L2 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZI1EE0NUF4XTDMLOB5MTZQLSXBCDUFVBQT4OWFBWBL3RI0YEFWCI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12275.95mil|Location2.X=12281.137mil|Location1.Y=16167.682mil|Location2.Y=16172.869mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12275.95mil|Location2.X=12281.137mil|Location1.Y=16167.682mil|Location2.Y=16172.869mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.1mm) Between Pad J7-6(-48.55mm,37.8mm) on L1 And Pad U5-1(-47.75mm,39.35mm) on L1 [Top Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12382.138mil|Location2.X=12387.325mil|Location1.Y=16305.474mil|Location2.Y=16310.661mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12382.138mil|Location2.X=12387.325mil|Location1.Y=16305.474mil|Location2.Y=16310.661mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.094mm &lt; 0.1mm) Between Pad U5-4(-45.85mm,42.05mm) on L1 And Via (-44.981mm,42.225mm) from L1 to L2 [Top Solder] Mask Sliver [0.094mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID1USCRAKTOIHCKZ5LKJOLHOYCTOQ5EJMTRX3LQ4MLMMIBQNTPDTVD"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13103.148mil|Location2.X=13106.773mil|Location1.Y=16209.92mil|Location2.Y=16213.545mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13103.148mil|Location2.X=13106.773mil|Location1.Y=16209.92mil|Location2.Y=16213.545mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad C10-2(-26.8mm,40.5mm) on L1 And Track (-27.134mm,36.222mm)(-27.134mm,39.778mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13098.582mil|Location2.X=13102.206mil|Location1.Y=16209.92mil|Location2.Y=16213.545mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13098.582mil|Location2.X=13102.206mil|Location1.Y=16209.92mil|Location2.Y=16213.545mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad C10-2(-26.8mm,40.5mm) on L1 And Track (-29.166mm,39.778mm)(-27.134mm,39.778mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12427.322mil|Location2.X=12430.946mil|Location1.Y=15910.944mil|Location2.Y=15914.568mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12427.322mil|Location2.X=12430.946mil|Location1.Y=15910.944mil|Location2.Y=15914.568mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad C1-2(-43.5mm,30.65mm) on L1 And Track (-44.651mm,32.184mm)(-41.349mm,32.184mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13088.739mil|Location2.X=13092.363mil|Location1.Y=16198.345mil|Location2.Y=16201.97mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13088.739mil|Location2.X=13092.363mil|Location1.Y=16198.345mil|Location2.Y=16201.97mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad C3-2(-28.15mm,38.95mm) on L1 And Track (-27.628mm,39.484mm)(-24.072mm,39.484mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13083.7mil|Location2.X=13087.324mil|Location1.Y=16198.345mil|Location2.Y=16201.97mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13083.7mil|Location2.X=13087.324mil|Location1.Y=16198.345mil|Location2.Y=16201.97mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad C3-2(-28.15mm,38.95mm) on L1 And Track (-27.628mm,39.484mm)(-27.628mm,41.516mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12244.29mil|Location2.X=12247.915mil|Location1.Y=16166.849mil|Location2.Y=16170.474mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12244.29mil|Location2.X=12247.915mil|Location1.Y=16166.849mil|Location2.Y=16170.474mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad J7-6(-48.55mm,37.8mm) on L1 And Track (-48.949mm,38.684mm)(-48.949mm,40.716mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12232.44mil|Location2.X=12236.064mil|Location1.Y=16166.849mil|Location2.Y=16170.474mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12232.44mil|Location2.X=12236.064mil|Location1.Y=16166.849mil|Location2.Y=16170.474mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad J7-6(-48.55mm,37.8mm) on L1 And Track (-52.251mm,38.684mm)(-48.949mm,38.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12137.564mil|Location2.X=12142.751mil|Location1.Y=16160.48mil|Location2.Y=16165.667mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12137.564mil|Location2.X=12142.751mil|Location1.Y=16160.48mil|Location2.Y=16165.667mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.084mm &lt; 0.1mm) Between Pad J7-8(-51mm,37.9mm) on Multi-Layer And Track (-52.251mm,38.684mm)(-48.949mm,38.684mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.084mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12720.542mil|Location2.X=12724.167mil|Location1.Y=15645.282mil|Location2.Y=15648.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12720.542mil|Location2.X=12724.167mil|Location1.Y=15645.282mil|Location2.Y=15648.907mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad JP4-2(-36.84mm,24.4mm) on Multi-Layer And Track (-36.852mm,25.436mm)(-36.852mm,30.706mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14616.909mil|Location2.X=14620.533mil|Location1.Y=16798.144mil|Location2.Y=16801.769mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14616.909mil|Location2.X=14620.533mil|Location1.Y=16798.144mil|Location2.Y=16801.769mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad MH3-1(13.44mm,52.86mm) on Multi-Layer And Text "TX (OUT)" (12.746mm,62.794mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13170.235mil|Location2.X=13173.86mil|Location1.Y=15868.266mil|Location2.Y=15871.891mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13170.235mil|Location2.X=13173.86mil|Location1.Y=15868.266mil|Location2.Y=15871.891mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad R22-1(-26.1mm,31.45mm) on L1 And Track (-25.43mm,27.61mm)(-25.43mm,38.01mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13170.235mil|Location2.X=13173.86mil|Location1.Y=15793.463mil|Location2.Y=15797.088mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13170.235mil|Location2.X=13173.86mil|Location1.Y=15793.463mil|Location2.Y=15797.088mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad R22-2(-26.1mm,29.55mm) on L1 And Track (-25.43mm,27.61mm)(-25.43mm,38.01mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13456.068mil|Location2.X=13461.255mil|Location1.Y=15518.095mil|Location2.Y=15523.282mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13456.068mil|Location2.X=13461.255mil|Location1.Y=15518.095mil|Location2.Y=15523.282mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.051mm &lt; 0.1mm) Between Pad R27-1(-17.5mm,21.85mm) on L1 And Track (-18.516mm,22.351mm)(-16.484mm,22.351mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13507.249mil|Location2.X=13512.436mil|Location1.Y=15480.655mil|Location2.Y=15485.842mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13507.249mil|Location2.X=13512.436mil|Location1.Y=15480.655mil|Location2.Y=15485.842mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.051mm &lt; 0.1mm) Between Pad R28-2(-17.5mm,21.65mm) on L1 And Track (-18.516mm,21.149mm)(-16.484mm,21.149mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.493mil|Location2.X=12709.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12704.493mil|Location2.X=12709.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0mm &lt; 0.1mm) Between Pad U3-1(-37.54mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12754.493mil|Location2.X=12759.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12754.493mil|Location2.X=12759.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0mm &lt; 0.1mm) Between Pad U3-2(-36.27mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12804.493mil|Location2.X=12809.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12804.493mil|Location2.X=12809.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0mm &lt; 0.1mm) Between Pad U3-3(-35mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12854.493mil|Location2.X=12859.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12854.493mil|Location2.X=12859.68mil|Location1.Y=15658.824mil|Location2.Y=15664.011mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0mm &lt; 0.1mm) Between Pad U3-4(-33.73mm,26.9mm) on L1 And Track (-40.65mm,25.7mm)(-33.08mm,25.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDBGVB2AEH5VPQC1PUNSK1OALWKF5RQVXNBKU5OQKNPDVZ10UEE4FK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.1mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14644.485mil|Location2.X=14648.109mil|Location1.Y=17138.729mil|Location2.Y=17142.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14644.485mil|Location2.X=14648.109mil|Location1.Y=17138.729mil|Location2.Y=17142.354mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "0" (12.886mm,64.274mm) on Bottom Overlay And Text "RX (IN)" (13.186mm,63.794mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12720.542mil|Location2.X=12724.167mil|Location1.Y=15689.507mil|Location2.Y=15693.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12720.542mil|Location2.X=12724.167mil|Location1.Y=15689.507mil|Location2.Y=15693.132mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "5V" (-35.63mm,28.813mm) on Bottom Overlay And Track (-36.852mm,25.436mm)(-36.852mm,30.706mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12348.582mil|Location2.X=12352.206mil|Location1.Y=15809.199mil|Location2.Y=15812.823mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12348.582mil|Location2.X=12352.206mil|Location1.Y=15809.199mil|Location2.Y=15812.823mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "J7" (-47.3mm,28.6mm) on Top Overlay And Track (-46.3mm,27mm)(-46.3mm,31.4mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12170.095mil|Location2.X=12173.72mil|Location1.Y=16675.34mil|Location2.Y=16678.965mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12170.095mil|Location2.X=12173.72mil|Location1.Y=16675.34mil|Location2.Y=16678.965mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "JP2" (-51.5mm,50.6mm) on Top Overlay And Track (-52.63mm,51.678mm)(-45.01mm,51.678mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12574.958mil|Location2.X=12578.582mil|Location1.Y=15502.125mil|Location2.Y=15505.749mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=12574.958mil|Location2.X=12578.582mil|Location1.Y=15502.125mil|Location2.Y=15505.749mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "JP4" (-40.7mm,21.8mm) on Top Overlay And Track (-40.7mm,18.2mm)(-40.7mm,22.6mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14634.232mil|Location2.X=14637.856mil|Location1.Y=16918.896mil|Location2.Y=16922.521mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=14634.232mil|Location2.X=14637.856mil|Location1.Y=16918.896mil|Location2.Y=16922.521mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "RX (IN)" (13.186mm,63.794mm) on Bottom Overlay And Text "TX (OUT)" (12.746mm,62.794mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDKPAVNX3M530FKUBGY1DQOM2F3NAJQOK3IRI2VKLE3EFEDFSREHGH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13748.469mil|Location2.X=13769.743mil|Location1.Y=17191.618mil|Location2.Y=17222.001mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=E:\tai_lieu_quan_trong\Embedded system\Home_work2\youtube-28pins\V1I1\28Pins_Project_V1I1_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=13748.469mil|Location2.X=13769.743mil|Location1.Y=17191.618mil|Location2.Y=17222.001mil|Absolute=True">Net Antennae: Track (-11.944mm,66.2mm)(-10.6mm,64.856mm) on L1 </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
